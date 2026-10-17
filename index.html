@@ -1192,6 +1192,7 @@ function renderShip(){
  og('عام',['gen']);og('الدول',['ru','by','br','vn','sa','cn','ph','eu','es','fr','nl','jp','uz','sg','my','hk','ae']);og('العملاء',['c1','c2','c3','c4']);og('أخرى',['sh']);
  sel.onchange=()=>{SHs.cs=sel.value;SHs.tab=null;renderShip();applyTr()};
  const sw=mk('div','selw');sw.appendChild(mk('label','','اختر الدولة / العميل'));sw.appendChild(sel);qb.appendChild(sw);
+ const pdfb=mkE('button','btn','🖨 طباعة / حفظ PDF (بيانات + صور + حيود)');pdfb.style.cssText='width:100%;margin:6px 0';pdfb.onclick=()=>shipPrint();qb.appendChild(pdfb);
  const T=[];if(C)T.push(['s','⭐ خاص: '+C.n]);T.push(['b','🚚 قبل التحميل'],['d','📦 أثناء التحميل'],['t','📝 التوثيق'],['n','⚠️ عدم المطابقة'],['p','🌡️ Setpoint'],['x','📷 أمثلة'],);
  const r2=mk('div','chips');r2.id='sht';T.forEach(([k,l])=>{const e=mk('button','chip',l);e.setAttribute('aria-pressed',k===SHs.tab);e.onclick=()=>{SHs.tab=SHs.tab===k?null:k;renderShip();applyTr()};r2.appendChild(e)});qb.appendChild(r2);
  const tb=SHs.tab;
